@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file contains the final merged configuration of customized XML files. -->
+<!-- Created: Fri Mar 10 03:20:04 AST 2017 -->
+<properties>
+  
+
+  <!--
+            Properties file for customer cluster scoped properties.
+-->
+  
+
+    
+  <server>
+    
+
+        
+    <!-- Directory in which instrumentation log files will be written -->
+    
+        
+    <!--<instrumentation-log-dir>/performanceServerInstrumentationLog</instrumentation-log-dir>-->
+    
+
+        
+    <!-- Whether to start logging instrumentation on startup -->
+    
+        
+    <!--<log-instrumentation-on-startup>false</log-instrumentation-on-startup>-->
+    
+					
+    
+  </server>
+  
+
+    
+  <performance-server>
+    
+
+        
+    <!-- Number of seconds between each launch of a new execution of the transfer process. -->
+    
+        
+    <!--<transfer-execution-interval>30</transfer-execution-interval>-->
+    
+
+        
+    <!-- Maximum number of records that will be transferred in one go. -->
+    
+        
+    <!--<transfer-block-size>500</transfer-block-size>-->
+    
+
+    
+  </performance-server>
+  
+	
+	
+  <!-- set unversioned-po-caching-enable to false for clustering 
+    <common merge="mergeChildren">
+		<unversioned-po-caching-enable merge="replace">false</unversioned-po-caching-enable>
+    </common>
+    -->
+  	
+	
+
+</properties>

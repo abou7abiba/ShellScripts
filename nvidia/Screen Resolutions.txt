@@ -1,0 +1,2 @@
+screen at BAJ: 1366x768 -> 1366x768+1920+0
+My screen at office: 1440x900 (16:10)

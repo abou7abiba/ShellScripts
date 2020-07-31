@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# This script is to install eclipse based on the following article:
+# article 1; http://ubuntuhandbook.org/index.php/2014/06/install-latest-eclipse-ubuntu-14-04/
+# It will create a new directory and extract the given tar.gz file to this directory
+#
+
+LOG_FILE=./eclipseInstall_out.log
+SHOW_LOG_FILE="### Check Log out at $(readlink -f $LOG_FILE)  ###"
+echo $SHOW_LOG_FILE
+
+ECLIPSE_TAR_FILE=/media/aibrahim/MySpace/Downloads/eclipse/eclipse-java-helios-linux-gtk-x86_64.tar.gz
+ECLIPSE_NAME="Eclipse java 3.6"
+ECLIPSE_SHORT_NAME="eclipse36"
+ECLIPS_DIR=/opt/Eclipse/$ECLIPSE_SHORT_NAME
+ECLIPSE_DESKTOP=/usr/share/applications/$ECLIPSE_SHORT_NAME.desktop
+
+# Extracting the archive to the target folder after creating this folder
+
+echo -e "extracting From: $ECLIPSE_TAR_FILE \nExtracting To: $ECLIPS_DIR"
+mkdir $ECLIPS_DIR
+tar -zxvf $ECLIPSE_TAR_FILE -C $ECLIPS_DIR >> $LOG_FILE
+
+# Create a desktop shortcut for the installed eclipse
+
+echo "Createing $ECLIPSE_NAME shortcut at $ECLIPSE_DESKTOP"
+echo -e "[Desktop Entry]
+Name=$ECLIPSE_NAME
+Type=Application
+Exec=$ECLIPS_DIR/eclipse/eclipse
+Terminal=false
+Icon=$ECLIPS_DIR/eclipse/icon.xpm
+Comment=Integrated Development Environment for Java Developers
+NoDisplay=false
+Categories=Development;IDE;
+Name[en]=$ECLIPSE_NAME (Helios)" > $ECLIPSE_DESKTOP
+
+####################################################
+# Create a desktop launcher for Process Desginer
+####################################################
+
+# The path of the target directory of the installed Process Designer
+PD_DIR=/opt/IBM/WebSphere/PD855
+
+PD855_SH=$PD_DIR/pd855.sh
+
+PD_NAME="Process Designer 8.5.5"
+PD_DESKTOP=/usr/share/applications/IBMBPM_855_PD.desktop
+
+echo -e "\n# Createing $PD_NAME shortcut at $PD_DESKTOP"
+echo -e "[Desktop Entry]
+Name=$PD_NAME
+Type=Application
+Exec=gksudo $PD855_SH
+Terminal=false
+Icon=$PD_DIR/bpm_pdesigner/icon.ico
+Comment=Process Designer for IBM BPM 8.5.5
+NoDisplay=false
+Categories=Development;IDE;Business Process Manager Advanced 8.5;IBM WebSphere
+Name[en]=Process Designer 8.5.5" > $PD_DESKTOP
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpcserver:BPCConfigExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:bpcserver="http://www.ibm.com/websphere/appserver/schemas/6.0/bpcserver.xmi" xmi:id="BPCConfigExtension_1448700871727">
+  <bpelFlowManager xmi:id="BPELFlowManager_1448700872217" retryLimit="5" retentionQueue="jms/BPERetQueue" maxNumberOfMessagesInRetentionQueue="20" holdQueue="jms/BPEHldQueue" BPEContainerApplicationName="BPEContainer_SingleCluster">
+    <properties xmi:id="Property_1448700872220" name="RALTemplateName" value="BPC_CLIENT" description="The RAL template to be used by Process Choreographer"/>
+    <properties xmi:id="Property_1448700872226" name="OperationMode" value="RUNTIME" description="Indicates whether this Process Choreographer configuration instance will be used for normal operation ('RUNTIME') or for archiving ('ARCHIVE'). Can only be set during initial configuration and not be changed later."/>
+    <properties xmi:id="Property_1448700872230" name="workCompletionContractPlugin0" value="es-wcc" description="The Event Sequencing plug-in to be used by Business Flow Manager."/>
+    <performanceOptimizations xmi:id="PerformanceOptimizations_1448700872875" allow="true" navigationMode="workManager">
+      <workManagerNavigation xmi:id="WorkManagerNavigation_1448700872879" workManagerJNDIName="wm/BPENavigationWorkManager" maxAgeForStalledMessages="240" recoveryIntervalForStalledMessages="2minutes" maxProcessTimeOnThread="240"/>
+      <interTransactionCache xmi:id="InterTransactionCache_1448700872883"/>
+    </performanceOptimizations>
+    <cleanupService xmi:id="CleanupService_1448700873437" frequency="0 0 23 * * ?" maxDuration="120" slicePerTransaction="10"/>
+  </bpelFlowManager>
+  <humanTaskManager xmi:id="HumanTaskManager_1448700872795" mailSession="">
+    <properties xmi:id="Property_1448700872802" name="EscalationEmail.Subject" value="The task '%htm:task.displayName%' has been escalated" description="Just for compatibility with 6.0.1 tasks."/>
+    <properties xmi:id="Property_1448700872806" name="EscalationEmail.Template" value="file:${WAS_INSTALL_ROOT}/ProcessChoreographer/sample/emailNotification.html" description="Just for compatibility with 6.0.1 tasks."/>
+    <properties xmi:id="Property_1448700872809" name="EscalationEmail.ClientDetailURL" value="" description="Just for compatibility with 6.0.1 tasks."/>
+    <properties xmi:id="Property_1448700872812" name="EscalationEmail.RetryTimeout" value="3600" description="Escalation email send retry timeout."/>
+    <properties xmi:id="Property_1448700872816" name="EscalationEmail.MaxRetries" value="4" description="Escalation email send retry count."/>
+    <properties xmi:id="Property_1448700872820" name="Substitution.AbsenceAttribute" value="isAbsent" description="The name of the VMM attribute holding the absence information for a user."/>
+    <properties xmi:id="Property_1448700872823" name="Substitution.SubstitutesAttribute" value="substitutes" description="The name of the VMM attribute holding the set of substitutes for a user."/>
+    <properties xmi:id="Property_1448700872826" name="Substitution.StartDateAttribute" value="substitutionStartDate" description="The name of the VMM attribute holding the start date of a substitution interval."/>
+    <properties xmi:id="Property_1448700872831" name="Substitution.EndDateAttribute" value="substitutionEndDate" description="The name of the VMM attribute holding the end date of a substitution interval."/>
+    <properties xmi:id="Property_1448700872834" name="Staff.Diagnosis" value="development_mode" description="Logging mode of default staff assignment. Allowed values are: &quot;on&quot;, &quot;off&quot;, and &quot;development_mode&quot;."/>
+    <properties xmi:id="Property_1448700872836" name="SupportVirtualUserIDsForPeopleAssignments" value="false" description="Flag indicating whether virtual user IDs are supported for people (staff) assignments."/>
+    <properties xmi:id="Property_1448700872839" name="Staff.PostProcessorPlugin.EnableResultSharing" value="false" description="Flag indicating whether sharing of people assignment post-processor plug-in results (as they are shared by standard people resolution) is enabled."/>
+    <properties xmi:id="Property_1448700872842" name="Staff.PostProcessorPlugin" value="none" description="The name used for registering the plug-in. See the InfoCenter description on how to determine the name, section &quot;Creating plug-ins to post-process people query results&quot;."/>
+    <properties xmi:id="Property_1448700872845" name="Staff.DefaultJNDINameOfStaffPluginProvider" value="bpe/staff/samplevmmconfiguration" description="JNDI name of the default people directory configuration. Used for creating ad hoc tasks and for working with work baskets and business categories."/>
+    <properties xmi:id="Property_1448700872847" name="WorkBasketEnabled" value="true" description="Set to true to enable work basket enabled APIs. Enabling this option changes the semantics of the property 'workBasketName' of the task instance."/>
+    <properties xmi:id="Property_1448700872850" name="BusinessCategoryEnabled" value="true" description="Set to true to enable business category enabled APIs. Enabling this option changes the semantics of the property 'type' of the task instance."/>
+    <properties xmi:id="Property_1448700872853" name="SharedWorkItemCleanup.TimeBeforeDeletion" value="24" description="Duration until deletion of unused shared work items [hour]."/>
+    <properties xmi:id="Property_1448700872856" name="SharedWorkItemCleanup.Interval" value="0 0 3 * * ?" description="Shared work item cleanup schedule."/>
+    <properties xmi:id="Property_1448700872860" name="SharedWorkItemCache.Size" value="1000" description="Number of work items in the shared work item cache."/>
+    <properties xmi:id="Property_1448700872863" name="Staff.CaseConversion.Users" value="none" description="This property indicates if user ids should be converted or not to upper or lower case when working with work items. Allowed values: &quot;none&quot; (default), &quot;lower&quot; and &quot;upper&quot;. CAUTION! Do not switch this property if you already have running instances. Otherwise, existing instances might be unavailable for further processing."/>
+    <properties xmi:id="Property_1448700872866" name="Staff.CaseConversion.Groups" value="none" description="This property indicates if group ids should be converted or not to upper or lower case when working with work items. Allowed values: &quot;none&quot; (default), &quot;lower&quot; and &quot;upper&quot;. CAUTION! Do not switch this property if you already have running instances. Otherwise, existing instances might be unavailable for further processing."/>
+    <eMailService xmi:id="EMailService_1448700873453" senderEMailAddress="taskmanager.emailservice@htm.companydomain" escalationURLPrefix="" taskURLPrefix="" administratorURLPrefix="https://aibrahimtp.cairo.ibm.com:9443/bpc" explorerURLPrefix="https://aibrahimtp.cairo.ibm.com:9443/bpc"/>
+    <staffResolution xmi:id="StaffResolution_1448700873457" staffQueryRefreshSchedule="0 0 1 * * ?" staffQueryResultTimeout="3600" restrictSubstituteManagment="true"/>
+    <cleanupService xmi:id="CleanupService_1448700873460" frequency="0 0 23 * * ?" maxDuration="120" slicePerTransaction="10"/>
+  </humanTaskManager>
+  <bpcContainer xmi:id="BPCContainer_1448700873953">
+    <dataStore xmi:id="BPCDataStore_1448700873967" schemaName="db2admin" createTables="true"/>
+  </bpcContainer>
+</bpcserver:BPCConfigExtension>

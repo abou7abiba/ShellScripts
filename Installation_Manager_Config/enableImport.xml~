@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<agent-input>
+<preference name='com.ibm.cic.common.core.preferences.import.enabled' value='true'/>
+</agent-input>

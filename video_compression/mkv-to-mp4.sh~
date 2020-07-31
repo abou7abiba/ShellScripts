@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# This script is to compress all videos in one folder to be created in output folder:
+# article 1; https://stackoverflow.com/questions/5784661/how-do-you-convert-an-entire-directory-with-ffmpeg
+

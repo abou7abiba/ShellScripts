@@ -1,0 +1,110 @@
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 23018
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3028I: Conflict detected on port 8879.  Likely causes: a) An instance of
+           the server dmgr is already running  b) some other process is using
+           port 8879
+ADMU3029I: Conflict detected on port 8879 for endpoint SOAP_CONNECTOR_ADDRESS
+           of the server dmgr 
+ADMU3027E: An instance of the server may already be running: dmgr
+ADMU0111E: Program exiting with error:
+           com.ibm.websphere.management.exception.AdminException: ADMU3027E: An
+           instance of the server may already be running: dmgr
+ADMU1211I: To obtain a full trace of the failure, use the -trace option.
+ADMU0211I: Error details may be seen in the file:
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/Node1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the Node1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 30149
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20150207-115140.log.
+Starting cluster SingleCluster.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command completed successfully.
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 7026
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/Node1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the Node1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 7402
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20150210-095227.log.
+Starting cluster SingleCluster.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command completed successfully.
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 7944
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/Node1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the Node1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 8321
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20150214-150332.log.
+Starting cluster SingleCluster.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command completed successfully.
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 16938
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/Node1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the Node1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 17316
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20151128-113131.log.
+Starting cluster SingleCluster.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command completed successfully.
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/DmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the DmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 17108
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/Node1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the Node1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 17522
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20160609-091905.log.
+Starting cluster SingleCluster.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command completed successfully.
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20170311-144054.log.
+CWMCB2123E: The profile DmgrProfile cannot be found on the local system.
+The 'BPMConfig.sh -start -profile DmgrProfile -de De1' command failed. For more information, see the log file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20170311-144054.log.
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/BpmDmgrProfile/logs/dmgr/startServer.log
+ADMU0128I: Starting tool with the BpmDmgrProfile profile
+ADMU3100I: Reading configuration for server: dmgr
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server dmgr open for e-business; process id is 22642
+ADMU0116I: Tool information is being logged in file
+           /opt/IBM/WebSphere/AppServer/profiles/BpmNode1Profile/logs/nodeagent/startServer.log
+ADMU0128I: Starting tool with the BpmNode1Profile profile
+ADMU3100I: Reading configuration for server: nodeagent
+ADMU3200I: Server launched. Waiting for initialization status.
+ADMU3000I: Server nodeagent open for e-business; process id is 23071
+Logging to file /opt/IBM/WebSphere/AppServer/logs/config/BPMConfig_20170311-144458.log.
+Starting cluster SingleCluster.
+When the BPMConfig command is used to start a deployment environment, it invokes the processes that are used to start the associated clusters. If the command is successful in invoking the processes, it returns a message to report that the command completed successfully. However, to determine whether the cluster members were all started successfully, you need to check the log files of the cluster members. The log files are located in <WAS_HOME>/profiles/logs.
+The 'BPMConfig.sh -start -profile BpmDmgrProfile -de De1' command completed successfully.

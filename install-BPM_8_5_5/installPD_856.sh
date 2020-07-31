@@ -1,0 +1,169 @@
+#!/bin/bash
+
+#Created by A.Ibrahim
+
+# This script is used for installing Process Designer 8.5.5 on Ubuntu 14.04 64 Bit
+# You need to run this script as root.
+
+LOG_FILE=./installPD_out.log
+SHOW_LOG_FILE="### Check Log out at $(readlink -f $LOG_FILE)  ###"
+echo $SHOW_LOG_FILE
+
+####################################################
+# Define input parameters
+####################################################
+
+# The path of the target directory of the installed Process Designer
+PD_DIR=/opt/IBM/WebSphere/PD856
+
+# The path of the zip file of the process designer copied from a windows machine
+PD_WIN_ZIP=/media/aibrahim/MySpace/Downloads/BPM/BPM856_PD/PD856_WIN.zip
+
+#The path of the installed WebSphere AppClient (version 8.5.5.5)
+WAS_APPCLIENT_PATH=/opt/IBM/WebSphere/AppClient/AppClient_8555
+
+# The path to the installed/extracted eclipse 3.6 (Helios)
+# from http://www.eclipse.org/downloads/download.php?file=/technology/epp/downloads/release/helios/R/eclipse-java-helios-linux-gtk.tar.gz
+ECLIPSE_DIR=/opt/Eclipse/eclipse36_x86/eclipse
+
+# The path to the XulRunner 1.9.2 32 Bit
+XULRUNNER_SRC=/media/aibrahim/MySpace/Downloads/System/xulrunner-3.6.26.en-US.linux-i686.tar.bz2
+
+# The path for the extracted XulRunner 1.9.2 32Bit
+XULRUNNER_DES=/opt/xulrunner_x86
+
+####################################################
+# Create PD Directory.
+####################################################
+STEP_DESC="### Create PD Directory at $PD_DIR  ###"
+echo -e $STEP_DESC
+echo -e $STEP_DESC >> $LOG_FILE
+mkdir $PD_DIR >> $LOG_FILE
+
+####################################################
+# Decompress the Process Designer zip file that is 
+# copied from a windows setup. 
+# We overrite the linux files by using "-o"
+####################################################
+STEP_DESC="\n# Decompress Process Designer zip file from: $PD_WIN_ZIP \n# to: $PD_DIR"
+echo -e $STEP_DESC
+echo -e $STEP_DESC >> $LOG_FILE
+unzip -o $PD_WIN_ZIP -d $PD_DIR >> $LOG_FILE
+
+####################################################
+# Replace AppClient of Process Designer from Windows  
+# with the one from the the installed WAS AppClient
+####################################################
+STEP_DESC="\n# Replcae Windows AppClient with Linux AppClient   ###"
+echo -e $STEP_DESC
+echo -e $STEP_DESC >> $LOG_FILE
+
+PD_APPCLIENT=$PD_DIR/AppClient
+PD_LIB=$PD_APPCLIENT/pd_lib
+
+rm -r $PD_APPCLIENT/*
+mkdir $PD_LIB
+
+echo -e "\n# Copy AppClient from: $WAS_APPCLIENT_PATH to: $PD_LIB"
+cp -r $WAS_APPCLIENT_PATH/java $PD_APPCLIENT
+cp -r $WAS_APPCLIENT_PATH/lib/* $PD_LIB
+cp -r $WAS_APPCLIENT_PATH/plugins/* $PD_LIB
+cp -r $WAS_APPCLIENT_PATH/java/jre/lib/ext/* $PD_LIB
+
+####################################################
+# Merge eclipse Linux version into Process Designer
+# We use eclipse 3.6 (helios) Linux 32 Bit extracted 
+####################################################
+echo -e "\n# Merging eclipse from $ECLIPSE_DIR \n# To Process Designer at $PD_DIR"
+cp -r $ECLIPSE_DIR/features/* $PD_DIR/features
+cp -r $ECLIPSE_DIR/plugins/* $PD_DIR/plugins
+cp $ECLIPSE_DIR/eclipse $PD_DIR
+
+####################################################
+# Extract and Register XulRunner
+####################################################
+echo -e "\n# Extract and Register XulRunner 32 Bit from $XULRUNNER_SRC \n# To: $XULRUNNER_DES"
+tar xvfj $XULRUNNER_SRC -C $XULRUNNER_DES >> $LOG_FILE
+$XULRUNNER_DES/xulrunner/xulrunner --register-user
+
+####################################################
+# Create eclipse.ini for the installed eclipse
+####################################################
+PD_INI=$PD_DIR/eclipse.ini
+
+echo -e "\n# Createing $PD_INI"
+echo -e "-install
+$PD_DIR
+-configuration
+$PD_DIR/configuration
+-name
+IBM BPM
+-data
+$PD_DIR/workspace
+-nl
+en
+-consoleLog
+-dir
+ltr
+-clean
+-vm
+$PD_DIR/AppClient/java/jre/bin/javaw
+-vmargs
+-Xms128m
+-Xmx512m
+-XX:PermSize=128m
+-XX:MaxPermSize=128m
+-Djavax.net.ssl.keyStoreType=PKCS12
+-Djavax.net.ssl.keyStore=$PD_DIR/etc/key.p12
+-Djavax.net.ssl.keyStorePassword=WebAS
+-Djavax.net.ssl.trustStoreType=PKCS12
+-Djavax.net.ssl.trustStore=$PD_DIR/etc/trust.p12
+-Djavax.net.ssl.trustStorePassword=WebAS
+-Dcom.ibm.CORBA.ConfigURL=file:$PD_DIR/resources/sas.client.props
+-Dcom.ibm.CORBA.FragmentSize="0"
+-Dcom.ibm.SSL.ConfigURL=file:$PD_DIR/resources/ssl.client.props
+-Djava.security.auth.login.config=$PD_DIR/resources/wsjaas_client.conf
+-Djava.naming.factory.initial=com.ibm.websphere.naming.WsnInitialContextFactory
+-Dcom.ibm.bpm.processcenter.url=http://aibrahimtp.cairo.ibm.com:9080
+-Djava.ext.dirs=$PD_LIB
+-Dcom.lombardisoftware.core.TWEnvironment.environmentName=AUTHORING_ENVIRONMENT
+-DentityExpansionLimit=2147483647
+-Djdk.lang.Process.allowAmbigousCommands=true
+-Duser.language=en
+-Duser.country=
+-Duser.variant=
+-Dorg.eclipse.swt.browser.XULRunnerPath=$XULRUNNER_DES/xulrunner" > $PD_INI
+
+####################################################
+# Create a wrapper script for Process Desginer
+# The main reason for this script is to set the 
+# working directory to be the installation location
+# before starting the process designer. Otherwise,
+# the process designer will not start correctly
+####################################################
+PD855_SH=$PD_DIR/pd855.sh
+echo -e "\n# Createing the wrapper script $PD855_SH"
+echo -e "#!/bin/sh
+cd $PD_DIR
+$PD_DIR/eclipse" > $PD855_SH
+chmod +x $PD855_SH
+
+####################################################
+# Create a desktop launcher for Process Desginer
+####################################################
+PD_NAME="Process Designer 8.5.5"
+PD_DESKTOP=/usr/share/applications/IBMBPM_855_PD.desktop
+
+echo -e "\n# Createing $PD_NAME shortcut at $PD_DESKTOP"
+echo -e "[Desktop Entry]
+Name=$PD_NAME
+Type=Application
+Exec=gksudo $PD855_SH
+Terminal=false
+Icon=$PD_DIR/bpm_pdesigner/icon.ico
+Comment=Process Designer for IBM BPM 8.5.5
+NoDisplay=false
+Categories=Development;IDE;Business Process Manager Advanced 8.5;IBM WebSphere
+Name[en]=Process Designer 8.5.5" > $PD_DESKTOP
+
+

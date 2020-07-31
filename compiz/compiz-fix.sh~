@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# copy the file to  /etc/pm/sleep.d/
+setsid compiz --replace
+
+exit 0

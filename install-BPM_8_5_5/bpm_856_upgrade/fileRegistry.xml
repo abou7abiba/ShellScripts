@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xml.type:datagraph xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wim="http://www.ibm.com/websphere/wim"
+    xmlns:xml.type="commonj.sdo">
+  <changeSummary xmlns=""/>
+  <wim:Root>
+    <wim:entities xsi:type="wim:PersonAccount">
+      <wim:identifier externalId="20e878d2-ef31-436f-97a1-d41a941130ae" externalName="uid=celladmin,o=defaultWIMFileBasedRealm"
+          uniqueId="20e878d2-ef31-436f-97a1-d41a941130ae" uniqueName="uid=celladmin,o=defaultWIMFileBasedRealm"/>
+      <wim:parent>
+        <wim:identifier uniqueName="o=defaultWIMFileBasedRealm"/>
+      </wim:parent>
+      <wim:createTimestamp>2015-11-28T08:37:40.83Z</wim:createTimestamp>
+      <wim:password>U0hBLTE6bjg1anI5NG8xbjljOi9QaDJ1WWJ4RnhCdDBJeXJYenQva1lQM3YvVT0K</wim:password>
+      <wim:uid>celladmin</wim:uid>
+      <wim:cn>celladmin</wim:cn>
+      <wim:sn>celladmin</wim:sn>
+    </wim:entities>
+    <wim:entities xsi:type="wim:PersonAccount">
+      <wim:identifier externalId="8b5b3263-ab8c-4b19-9247-9862fd905532" externalName="uid=bpmadmin,o=defaultWIMFileBasedRealm"
+          uniqueId="8b5b3263-ab8c-4b19-9247-9862fd905532" uniqueName="uid=bpmadmin,o=defaultWIMFileBasedRealm"/>
+      <wim:parent>
+        <wim:identifier uniqueName="o=defaultWIMFileBasedRealm"/>
+      </wim:parent>
+      <wim:createTimestamp>2015-11-28T10:46:51.971+02:00</wim:createTimestamp>
+      <wim:password>U0hBLTE6c3BuOXV2eml1bDN0Ojl1VDFRNHVWOFg1Mks0dWtMWWNzaGxjaDY4TT0K</wim:password>
+      <wim:uid>bpmadmin</wim:uid>
+      <wim:cn>bpmadmin</wim:cn>
+      <wim:sn>bpmadmin</wim:sn>
+    </wim:entities>
+  </wim:Root>
+</xml.type:datagraph>
